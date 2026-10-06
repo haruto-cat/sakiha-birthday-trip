@@ -14,7 +14,9 @@ html{scroll-padding-top:env(safe-area-inset-top,0px);color-scheme:light}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-weight:900;font-size:clamp(16px,2.2vw,20px);line-height:1.5}
 h1,h2,.d{font-family:"Dela Gothic One","Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif;font-weight:400;margin:0}
 .hero{background:var(--pink);border-bottom:3px solid var(--ink);padding:calc(20px + env(safe-area-inset-top,0px)) 14px 24px}
-.hero .tag{display:inline-block;background:var(--yellow);border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:4px 12px;margin-bottom:22px}
+.toprow{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;margin-bottom:22px}
+.toprow .pill{padding:4px 12px;font-size:1em}
+.hero .tag{display:inline-block;background:var(--yellow);border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:4px 12px}
 .hero h1{font-size:clamp(64px,23vw,260px);line-height:.95;letter-spacing:-.03em;word-break:keep-all}
 .hero h1 span{display:block}
 .hero h1 .o{color:var(--paper);-webkit-text-stroke:3px var(--ink)}
@@ -45,6 +47,17 @@ a.btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 .day.b .item.big{background:var(--pink)}
 .foot{background:var(--ink);color:var(--paper);padding:24px 14px;font-family:"Dela Gothic One",sans-serif;font-size:clamp(28px,9vw,90px);line-height:1.1}
 .copy{background:var(--yellow);border-top:3px solid var(--ink);padding:12px 14px;font-size:.75em;text-align:center}
+.day.c{background:var(--pink)}
+.pack{padding-top:22px;gap:12px}
+.chk{display:flex;align-items:center;gap:12px;background:var(--white);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:5px 12px;cursor:pointer;font-size:1em;transition:transform .08s,box-shadow .08s}
+.chk:active{transform:translate(6px,6px);box-shadow:0 0 0 var(--ink)}
+.chk input{position:absolute;opacity:0;pointer-events:none}
+.box{flex:none;width:26px;height:26px;border:3px solid var(--ink);background:var(--paper);position:relative}
+.chk input:checked+.box{background:var(--blue)}
+.chk input:checked+.box::after{content:"";position:absolute;left:6px;top:0;width:7px;height:14px;border:solid var(--white);border-width:0 4px 4px 0;transform:rotate(45deg)}
+.chk:has(input:checked){background:var(--yellow)}
+.chk input:focus-visible+.box{outline:3px solid var(--ink);outline-offset:3px}
+.dh h2 small#cnt{font-family:"Dela Gothic One",sans-serif}
 .foot span{color:var(--yellow)}
 .fb h1,.fb h2,.fb .d,.fb .t,.fb .item.big .w,.fb .foot{font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-weight:900}
 .fb h1 span:not(.o),.fb h2,.fb .d,.fb .t,.fb .item.big .w,.fb .foot{-webkit-text-stroke:1.5px currentColor}
@@ -55,9 +68,9 @@ a.btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 </head>
 <body>
 <header class="hero">
-  <div class="tag d">1 NIGHT 2 DAYS</div>
+  <div class="toprow"><div class="tag d">1 NIGHT 2 DAYS</div><div class="pill">浅草 ⇄ 日光</div></div>
   <h1><span>咲葉</span><span class="o">BIRTH</span><span>DAY</span><span class="o">TRIP</span></h1>
-  <div class="dates"><a class="pill btn" href="#day1">10/7 水</a><a class="pill btn" href="#day2">10/8 木</a><div class="pill">浅草 ⇄ 日光</div></div>
+  <div class="dates"><a class="pill btn" href="#day1">10/7 水</a><a class="pill btn" href="#day2">10/8 木</a><a class="pill btn" href="#items">持ち物</a></div>
 </header>
 
 <section class="day a" id="day1">
@@ -93,10 +106,39 @@ a.btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
   </ol>
 </section>
 
+<section class="day c" id="items">
+  <div class="dh"><div class="n d">ITEMS</div><h2>持ち物<small id="cnt">0/19</small></h2></div>
+  <ul class="list pack">
+    <li><label class="chk"><input type="checkbox" value="モバイルバッテリー"><span class="box"></span><span class="nm">モバイルバッテリー</span></label></li>
+    <li><label class="chk"><input type="checkbox" value="めがね"><span class="box"></span><span class="nm">めがね</span></label></li>
+    <li><label class="chk"><input type="checkbox" value="財布"><span class="box"></span><span class="nm">財布</span></label></li>
+    <li><label class="chk"><input type="checkbox" value="鍵"><span class="box"></span><span class="nm">鍵</span></label></li>
+    <li><label class="chk"><input type="checkbox" value="ETCカード"><span class="box"></span><span class="nm">ETCカード</span></label></li>
+    <li><label class="chk"><input type="checkbox" value="着替え"><span class="box"></span><span class="nm">着替え</span></label></li>
+    <li><label class="chk"><input type="checkbox" value="下着"><span class="box"></span><span class="nm">下着</span></label></li>
+    <li><label class="chk"><input type="checkbox" value="スキンケアセット"><span class="box"></span><span class="nm">スキンケアセット</span></label></li>
+    <li><label class="chk"><input type="checkbox" value="ヘアオイル"><span class="box"></span><span class="nm">ヘアオイル</span></label></li>
+    <li><label class="chk"><input type="checkbox" value="パック"><span class="box"></span><span class="nm">パック</span></label></li>
+    <li><label class="chk"><input type="checkbox" value="iPad"><span class="box"></span><span class="nm">iPad</span></label></li>
+    <li><label class="chk"><input type="checkbox" value="香水"><span class="box"></span><span class="nm">香水</span></label></li>
+    <li><label class="chk"><input type="checkbox" value="マスク"><span class="box"></span><span class="nm">マスク</span></label></li>
+    <li><label class="chk"><input type="checkbox" value="充電コードアダプタ"><span class="box"></span><span class="nm">充電コードアダプタ</span></label></li>
+    <li><label class="chk"><input type="checkbox" value="靴下"><span class="box"></span><span class="nm">靴下</span></label></li>
+    <li><label class="chk"><input type="checkbox" value="ハンカチティッシュ"><span class="box"></span><span class="nm">ハンカチティッシュ</span></label></li>
+  </ul>
+</section>
+
 <footer class="foot">HAPPY<br>BIRTHDAY<br><span>咲葉!</span></footer>
 <div class="copy">© 2026 Haruto_cat</div>
 <script>
 try{document.fonts.ready.then(function(){if(!document.fonts.check('1em "Dela Gothic One"'))document.documentElement.classList.add("fb")})}catch(e){document.documentElement.classList.add("fb")}
+</script>
+<script>
+(function(){var K="sakiha-pack",bx=document.querySelectorAll(".chk input"),c=document.getElementById("cnt");
+function upd(){var n=0,a=[];bx.forEach(function(b){if(b.checked){n++;a.push(b.value)}});c.textContent=n+"/"+bx.length;try{localStorage.setItem(K,JSON.stringify(a))}catch(e){}}
+try{var v=JSON.parse(localStorage.getItem(K)||"[]");bx.forEach(function(b){b.checked=v.indexOf(b.value)>-1})}catch(e){}
+bx.forEach(function(b){b.addEventListener("change",upd)});
+var n=0;bx.forEach(function(b){if(b.checked)n++});c.textContent=n+"/"+bx.length})();
 </script>
 </body>
 </html>
